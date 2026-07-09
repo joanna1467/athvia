@@ -74,11 +74,6 @@ export default function Pricing() {
         </div>
       </div>
 
-      <p className="mx-auto mt-8 max-w-xl text-center text-sm text-moss">
-        Cost should never keep an athlete from good guidance. Families with
-        financial need get AthVia Plus free — no documentation, no questions
-        asked.
-      </p>
     </section>
   )
 }
