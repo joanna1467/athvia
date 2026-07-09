@@ -50,12 +50,12 @@ export default function Landing() {
     <>
       <section className="relative overflow-hidden">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden select-none md:block">
-          <img src={hero('track-blocks.png')} alt="" className="floaty absolute left-[2%] top-10 w-16 -rotate-6 xl:left-[5%] xl:top-12 xl:w-28" />
-          <img src={hero('field-hockey.png')} alt="" className="floaty-slow absolute -left-16 bottom-6 w-44 rotate-6 xl:-left-12 xl:bottom-10 xl:w-60" />
-          <img src={hero('volleyball.png')} alt="" className="floaty-fast absolute bottom-48 left-[15%] hidden w-16 rotate-12 xl:block" />
-          <img src={hero('basketball.png')} alt="" className="floaty-slow absolute right-[1%] top-10 w-20 rotate-2 xl:right-[4%] xl:top-14 xl:w-36" />
-          <img src={hero('football.png')} alt="" className="floaty absolute bottom-36 right-[7%] hidden w-20 -rotate-12 xl:block" />
-          <img src={hero('rowing.png')} alt="" className="floaty-fast absolute -right-14 bottom-4 w-56 -rotate-2 xl:-right-10 xl:bottom-8 xl:w-80" />
+          <img src={hero('track-blocks.png')} alt="" className="floaty absolute left-[2%] top-12 w-12 -rotate-6 xl:left-[4%] xl:w-20" />
+          <img src={hero('field-hockey.png')} alt="" className="floaty-slow absolute -left-12 bottom-6 w-32 rotate-6 xl:-left-10 xl:bottom-10 xl:w-44" />
+          <img src={hero('volleyball.png')} alt="" className="floaty-fast absolute bottom-48 left-[12%] hidden w-12 rotate-12 xl:block" />
+          <img src={hero('basketball.png')} alt="" className="floaty-slow absolute right-[1%] top-12 w-14 rotate-2 xl:right-[3%] xl:w-24" />
+          <img src={hero('football.png')} alt="" className="floaty absolute bottom-36 right-[6%] hidden w-14 -rotate-12 xl:block" />
+          <img src={hero('rowing.png')} alt="" className="floaty-fast absolute -right-10 bottom-4 w-44 -rotate-2 xl:bottom-8 xl:w-60" />
         </div>
         <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 text-center md:pt-24">
           <p className="mx-auto mb-6 w-fit rounded-full border border-line bg-cream px-4 py-1 text-sm font-medium text-moss">
@@ -63,10 +63,10 @@ export default function Landing() {
           </p>
           <h1 className="relative mx-auto max-w-3xl text-5xl font-semibold leading-tight text-forest md:text-6xl">
             <img src={hero('spark.png')} alt="" aria-hidden="true"
-              className="absolute -left-12 -top-8 hidden w-10 rotate-12 md:block" />
+              className="absolute -left-10 -top-6 hidden w-7 rotate-12 md:block" />
             Recruiting for the 90%.
             <img src={hero('spark.png')} alt="" aria-hidden="true"
-              className="absolute -bottom-2 -right-10 hidden w-7 -rotate-12 md:block" />
+              className="absolute -bottom-1 -right-8 hidden w-5 -rotate-12 md:block" />
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-moss">
             Most recruiting platforms sell exposure to a D1 dream. AthVia is the
