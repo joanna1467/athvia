@@ -3,20 +3,28 @@ import { NavLink, Link, Outlet } from 'react-router-dom'
 function Wordmark() {
   return (
     <Link to="/" className="flex items-center gap-2">
-      <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
+      <svg viewBox="0 0 40 40" className="h-9 w-9" aria-hidden="true">
         <path
-          d="M6 26 L16 5 L26 26"
+          d="M10 24 L20 5 L30 24"
           fill="none"
-          stroke="#294720"
-          strokeWidth="2"
+          stroke="#4e8a5a"
+          strokeWidth="2.4"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d="M4 20 Q10 16 16 20 T28 20"
+          d="M13.5 25.5 L20 33 L26.5 25.5"
           fill="none"
-          stroke="#7ca06d"
-          strokeWidth="2"
+          stroke="#4e8a5a"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M4 22 C 9 18, 15 18, 20 22 S 31 26, 36 22"
+          fill="none"
+          stroke="#6fae7d"
+          strokeWidth="2.4"
           strokeLinecap="round"
         />
       </svg>

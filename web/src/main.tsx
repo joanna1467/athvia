@@ -11,9 +11,15 @@ import Resources from './pages/Resources'
 import Pricing from './pages/Pricing'
 import SignIn from './pages/SignIn'
 
+const redirect = sessionStorage.getItem('spa-redirect')
+if (redirect) {
+  sessionStorage.removeItem('spa-redirect')
+  window.history.replaceState(null, '', redirect)
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<App />}>
           <Route index element={<Landing />} />
