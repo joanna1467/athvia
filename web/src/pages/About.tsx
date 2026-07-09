@@ -24,6 +24,13 @@ const team: Member[] = [
     initials: 'AT',
   },
   {
+    name: 'Joanna Xu',
+    role: 'Chief Technology Officer',
+    bio: "Hi! I'm Joanna Xu, the CTO of AthVia. I used to play basketball and was a competitive dancer, and now I do track and field! A fun fact about me is that my thumbs are double-jointed!",
+    photo: 'team/joanna.png',
+    initials: 'JX',
+  },
+  {
     name: 'Sahaana Reddy',
     role: 'Chief Operating Officer',
     bio: "Hi! I'm Sahaana Reddy, the COO of AthVia. I'm a former basketball player and currently play volleyball. A fun fact about me is that I have two dogs!",
@@ -36,13 +43,6 @@ const team: Member[] = [
     bio: "Hey! I'm Kayla Choe, the CMO of AthVia. I'm a former soccer player and now play basketball and volleyball. A little fun fact about me is that I have a sister who is ten years younger than me!",
     photo: 'team/kayla.jpg',
     initials: 'KC',
-  },
-  {
-    name: 'Joanna Xu',
-    role: 'Chief Technology Officer',
-    bio: "Hi! I'm Joanna Xu, the CTO of AthVia. I used to play basketball and was a competitive dancer, and now I do track and field! A fun fact about me is that my thumbs are double-jointed!",
-    photo: 'team/joanna.png',
-    initials: 'JX',
   },
 ]
 
