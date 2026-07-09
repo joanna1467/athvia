@@ -12,16 +12,30 @@ const team: Member[] = [
   {
     name: 'Alina Fang',
     role: 'Chief Executive Officer',
-    bio: "Hello! I am Alina Fang, the CEO of AthVia. I was a former cheerleader, volleyball, basketball, and lacrosse player. Now, actively doing dance — and a fun fact would be that I am really into fashion lately!",
+    bio: "Hello! I'm Alina Fang, the CEO of AthVia. I'm a former cheerleader and volleyball, basketball, and lacrosse player. Now I'm actively dancing — and a fun fact is that I've been really into fashion lately!",
     photo: 'team/alina.jpg',
     initials: 'AF',
   },
   {
-    name: 'Joanna Xu',
-    role: 'Co-founder',
-    bio: 'Bio coming soon.',
-    photo: 'team/joanna.jpg',
-    initials: 'JX',
+    name: 'Anika Thosar',
+    role: 'Chief Financial Officer',
+    bio: "Hi! I'm Anika Thosar, the CFO of AthVia. I'm a former badminton player and now a swimmer. A fun fact about me is that I was born on Mother's Day!",
+    photo: 'team/anika.jpg',
+    initials: 'AT',
+  },
+  {
+    name: 'Sahaana Reddy',
+    role: 'Chief Operating Officer',
+    bio: "Hi! I'm Sahaana Reddy, the COO of AthVia. I'm a former basketball player and currently play volleyball. A fun fact about me is that I have two dogs!",
+    photo: 'team/sahaana.jpg',
+    initials: 'SR',
+  },
+  {
+    name: 'Kayla Choe',
+    role: 'Chief Marketing Officer',
+    bio: "Hey! I'm Kayla Choe, the CMO of AthVia. I'm a former soccer player and now play basketball and volleyball. A little fun fact about me is that I have a sister who is ten years younger than me!",
+    photo: 'team/kayla.jpg',
+    initials: 'KC',
   },
 ]
 
