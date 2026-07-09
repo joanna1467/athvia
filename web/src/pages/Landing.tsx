@@ -68,7 +68,7 @@ export default function Landing() {
             Create your free profile
           </Link>
           <Link
-            to="/signin"
+            to="/coaches"
             className="rounded-lg border border-forest px-6 py-3 font-medium text-forest hover:bg-leaf/40"
           >
             I'm a college coach

@@ -35,9 +35,9 @@ function Wordmark() {
 
 const links = [
   { to: '/explore', label: 'Athletes' },
+  { to: '/coaches', label: 'Coaches' },
   { to: '/schools', label: 'Schools' },
   { to: '/events', label: 'Events' },
-  { to: '/resources', label: 'Resources' },
   { to: '/pricing', label: 'Pricing' },
 ]
 

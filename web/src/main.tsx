@@ -5,9 +5,9 @@ import './index.css'
 import App from './App'
 import Landing from './pages/Landing'
 import Explore from './pages/Explore'
+import Coaches from './pages/Coaches'
 import Schools from './pages/Schools'
 import Events from './pages/Events'
-import Resources from './pages/Resources'
 import Pricing from './pages/Pricing'
 import SignIn from './pages/SignIn'
 
@@ -24,9 +24,9 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<App />}>
           <Route index element={<Landing />} />
           <Route path="explore" element={<Explore />} />
+          <Route path="coaches" element={<Coaches />} />
           <Route path="schools" element={<Schools />} />
           <Route path="events" element={<Events />} />
-          <Route path="resources" element={<Resources />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="signin" element={<SignIn />} />
         </Route>
