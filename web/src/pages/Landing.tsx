@@ -49,13 +49,13 @@ export default function Landing() {
   return (
     <>
       <section className="relative overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden select-none lg:block">
-          <img src={hero('track-blocks.png')} alt="" className="floaty absolute left-[5%] top-12 w-24 -rotate-6 xl:w-28" />
-          <img src={hero('field-hockey.png')} alt="" className="floaty-slow absolute -left-12 bottom-10 w-60 rotate-6" />
-          <img src={hero('volleyball.png')} alt="" className="floaty-fast absolute bottom-48 left-[15%] w-16 rotate-12" />
-          <img src={hero('basketball.png')} alt="" className="floaty-slow absolute right-[4%] top-14 w-32 rotate-2 xl:w-36" />
-          <img src={hero('football.png')} alt="" className="floaty absolute bottom-36 right-[7%] w-20 -rotate-12" />
-          <img src={hero('rowing.png')} alt="" className="floaty-fast absolute -right-10 bottom-8 w-72 -rotate-2 xl:w-80" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden select-none md:block">
+          <img src={hero('track-blocks.png')} alt="" className="floaty absolute left-[2%] top-10 w-16 -rotate-6 xl:left-[5%] xl:top-12 xl:w-28" />
+          <img src={hero('field-hockey.png')} alt="" className="floaty-slow absolute -left-16 bottom-6 w-44 rotate-6 xl:-left-12 xl:bottom-10 xl:w-60" />
+          <img src={hero('volleyball.png')} alt="" className="floaty-fast absolute bottom-48 left-[15%] hidden w-16 rotate-12 xl:block" />
+          <img src={hero('basketball.png')} alt="" className="floaty-slow absolute right-[1%] top-10 w-20 rotate-2 xl:right-[4%] xl:top-14 xl:w-36" />
+          <img src={hero('football.png')} alt="" className="floaty absolute bottom-36 right-[7%] hidden w-20 -rotate-12 xl:block" />
+          <img src={hero('rowing.png')} alt="" className="floaty-fast absolute -right-14 bottom-4 w-56 -rotate-2 xl:-right-10 xl:bottom-8 xl:w-80" />
         </div>
         <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 text-center md:pt-24">
           <p className="mx-auto mb-6 w-fit rounded-full border border-line bg-cream px-4 py-1 text-sm font-medium text-moss">
@@ -88,7 +88,7 @@ export default function Landing() {
               I'm a college coach
             </Link>
           </div>
-          <img src={hero('rowing.png')} alt="A four-person rowing crew mid-stroke" className="mx-auto mt-12 w-72 lg:hidden" />
+          <img src={hero('rowing.png')} alt="A four-person rowing crew mid-stroke" className="mx-auto mt-12 w-72 md:hidden" />
         </div>
       </section>
 
