@@ -19,6 +19,7 @@ const links = [
   { to: '/schools', label: 'Schools' },
   { to: '/events', label: 'Events' },
   { to: '/pricing', label: 'Pricing' },
+  { to: '/about', label: 'About' },
 ]
 
 export default function App() {

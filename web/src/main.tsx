@@ -9,6 +9,7 @@ import Coaches from './pages/Coaches'
 import Schools from './pages/Schools'
 import Events from './pages/Events'
 import Pricing from './pages/Pricing'
+import About from './pages/About'
 import SignIn from './pages/SignIn'
 
 const redirect = sessionStorage.getItem('spa-redirect')
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="schools" element={<Schools />} />
           <Route path="events" element={<Events />} />
           <Route path="pricing" element={<Pricing />} />
+          <Route path="about" element={<About />} />
           <Route path="signin" element={<SignIn />} />
         </Route>
       </Routes>
