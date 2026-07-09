@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sage: #f1f4e6;
+  --color-cream: #f9faf1;
+  --color-leaf: #d3e0cc;
+  --color-forest: #294720;
+  --color-forest-deep: #1f3617;
+  --color-moss: #536749;
+  --color-ochre: #d09d25;
+  --color-line: #c7d2bc;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+body {
+  @apply bg-sage text-forest-deep font-sans antialiased;
+}
+
+h1, h2, h3 {
+  @apply font-display;
+}

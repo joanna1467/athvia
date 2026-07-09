@@ -1,0 +1,27 @@
+/* AthVia design tokens — derived from the logo (cream sage + forest green).
+   Drop into src/index.css of the exported Lovable app, replacing the
+   default :root block. shadcn/Tailwind HSL format. Light mode only for v1. */
+:root {
+  --background: 75 40% 93%;         /* cream sage (logo background) */
+  --foreground: 105 40% 15%;        /* deep forest green (wordmark) */
+  --primary: 105 40% 20%;           /* forest green — buttons, nav, headings */
+  --primary-foreground: 75 40% 95%;
+  --secondary: 100 25% 84%;         /* pale leaf — section fills, hovers */
+  --secondary-foreground: 105 40% 18%;
+  --accent: 42 70% 48%;             /* warm ochre — CTAs + Active badges only */
+  --accent-foreground: 105 40% 12%;
+  --muted: 80 25% 88%;
+  --muted-foreground: 105 15% 35%;
+  --card: 70 45% 97%;
+  --card-foreground: 105 40% 15%;
+  --border: 90 20% 78%;
+  --input: 90 20% 78%;
+  --ring: 105 40% 30%;
+  --destructive: 0 62% 42%;
+  --destructive-foreground: 75 40% 95%;
+  --radius: 0.5rem;
+}
+
+/* Fonts: add to index.html —
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+   Headings: Fraunces 600 · Body/UI: Inter 400/500 */
