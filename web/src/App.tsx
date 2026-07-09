@@ -3,38 +3,11 @@ import { NavLink, Link, Outlet } from 'react-router-dom'
 function Wordmark() {
   return (
     <Link to="/" className="flex items-center gap-2">
-      <svg viewBox="0 0 48 40" className="h-9 w-auto" aria-hidden="true">
-        <path
-          d="M8 22 L15.5 4 L23 22 M10.8 15.5 L20.2 15.5"
-          fill="none"
-          stroke="#4e9861"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M2 25 C 10 20, 18 20, 26 25 S 40 30, 46 24"
-          fill="none"
-          stroke="#4e9861"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-        />
-        <path
-          d="M3 30.5 C 9 28, 14 28, 19 30"
-          fill="none"
-          stroke="#4e9861"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-        />
-        <path
-          d="M27 29 L32.5 37 L38 28"
-          fill="none"
-          stroke="#4e9861"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <img
+        src={`${import.meta.env.BASE_URL}logo.png?v=2`}
+        alt=""
+        className="h-10 w-auto"
+      />
       <span className="font-display text-2xl font-semibold text-forest">AthVia</span>
     </Link>
   )
