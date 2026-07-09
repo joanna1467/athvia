@@ -37,6 +37,13 @@ const team: Member[] = [
     photo: 'team/kayla.jpg',
     initials: 'KC',
   },
+  {
+    name: 'Joanna Xu',
+    role: 'Chief Technology Officer',
+    bio: "Hi! I'm Joanna Xu, the CTO of AthVia. I used to play basketball and was a competitive dancer, and now I do track and field! A fun fact about me is that my thumbs are double-jointed!",
+    photo: 'team/joanna.png',
+    initials: 'JX',
+  },
 ]
 
 function TeamCard({ m }: { m: Member }) {
