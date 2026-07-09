@@ -45,34 +45,50 @@ const steps = [
 ]
 
 export default function Landing() {
+  const hero = (f: string) => `${import.meta.env.BASE_URL}hero/${f}`
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pb-20 pt-16 text-center md:pt-24">
-        <p className="mx-auto mb-6 w-fit rounded-full border border-line bg-cream px-4 py-1 text-sm font-medium text-moss">
-          Free forever for the essentials · We never sell your data
-        </p>
-        <h1 className="mx-auto max-w-3xl text-5xl font-semibold leading-tight text-forest md:text-6xl">
-          Recruiting for the 90%.
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-moss">
-          Most recruiting platforms sell exposure to a D1 dream. AthVia is the
-          honest platform for high school athletes headed to D3, D2, and NAIA
-          programs — free profiles, coach-verified film, and a fit score that
-          tells you the truth.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            to="/signin"
-            className="rounded-lg bg-ochre px-6 py-3 font-medium text-forest-deep hover:brightness-95"
-          >
-            Create your free profile
-          </Link>
-          <Link
-            to="/coaches"
-            className="rounded-lg border border-forest px-6 py-3 font-medium text-forest hover:bg-leaf/40"
-          >
-            I'm a college coach
-          </Link>
+      <section className="relative overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden select-none lg:block">
+          <img src={hero('track-blocks.png')} alt="" className="floaty absolute left-[5%] top-12 w-24 -rotate-6 xl:w-28" />
+          <img src={hero('field-hockey.png')} alt="" className="floaty-slow absolute -left-12 bottom-10 w-60 rotate-6" />
+          <img src={hero('volleyball.png')} alt="" className="floaty-fast absolute bottom-48 left-[15%] w-16 rotate-12" />
+          <img src={hero('basketball.png')} alt="" className="floaty-slow absolute right-[4%] top-14 w-32 rotate-2 xl:w-36" />
+          <img src={hero('football.png')} alt="" className="floaty absolute bottom-36 right-[7%] w-20 -rotate-12" />
+          <img src={hero('rowing.png')} alt="" className="floaty-fast absolute -right-10 bottom-8 w-72 -rotate-2 xl:w-80" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 text-center md:pt-24">
+          <p className="mx-auto mb-6 w-fit rounded-full border border-line bg-cream px-4 py-1 text-sm font-medium text-moss">
+            Free forever for the essentials · We never sell your data
+          </p>
+          <h1 className="relative mx-auto max-w-3xl text-5xl font-semibold leading-tight text-forest md:text-6xl">
+            <img src={hero('spark.png')} alt="" aria-hidden="true"
+              className="absolute -left-12 -top-8 hidden w-10 rotate-12 md:block" />
+            Recruiting for the 90%.
+            <img src={hero('spark.png')} alt="" aria-hidden="true"
+              className="absolute -bottom-2 -right-10 hidden w-7 -rotate-12 md:block" />
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-moss">
+            Most recruiting platforms sell exposure to a D1 dream. AthVia is the
+            honest platform for high school athletes headed to D3, D2, and NAIA
+            programs — free profiles, coach-verified film, and a fit score that
+            tells you the truth.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to="/signin"
+              className="rounded-lg bg-ochre px-6 py-3 font-medium text-forest-deep hover:brightness-95"
+            >
+              Create your free profile
+            </Link>
+            <Link
+              to="/coaches"
+              className="rounded-lg border border-forest px-6 py-3 font-medium text-forest hover:bg-leaf/40"
+            >
+              I'm a college coach
+            </Link>
+          </div>
+          <img src={hero('rowing.png')} alt="A four-person rowing crew mid-stroke" className="mx-auto mt-12 w-72 lg:hidden" />
         </div>
       </section>
 

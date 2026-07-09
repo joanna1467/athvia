@@ -21,3 +21,14 @@ body {
 h1, h2, h3 {
   @apply font-display;
 }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.floaty { animation: floaty 7s ease-in-out infinite; }
+.floaty-slow { animation: floaty 9.5s ease-in-out 1.2s infinite; }
+.floaty-fast { animation: floaty 5.5s ease-in-out 0.6s infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .floaty, .floaty-slow, .floaty-fast { animation: none; }
+}
