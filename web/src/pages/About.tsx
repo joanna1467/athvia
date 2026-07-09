@@ -12,7 +12,7 @@ const team: Member[] = [
   {
     name: 'Alina Fang',
     role: 'Chief Executive Officer',
-    bio: 'Former cheerleader, volleyball, basketball, and lacrosse player — now an active dancer with a growing love for fashion.',
+    bio: "Hello! I am Alina Fang, the CEO of AthVia. I was a former cheerleader, volleyball, basketball, and lacrosse player. Now, actively doing dance — and a fun fact would be that I am really into fashion lately!",
     photo: 'team/alina.jpg',
     initials: 'AF',
   },
