@@ -112,13 +112,13 @@ export default function Landing() {
           <div className="mx-auto mt-10 grid max-w-2xl gap-6 md:grid-cols-2">
             <div className="rounded-xl bg-forest-deep p-6">
               <p className="text-sm uppercase tracking-wide text-leaf">Typical recruiting services</p>
-              <p className="mt-2 font-display text-4xl font-semibold">$500–$4,000</p>
-              <p className="mt-2 text-sm text-leaf">to promise exposure</p>
+              <p className="mt-2 font-display text-4xl font-semibold">$20–$1,000+</p>
+              <p className="mt-2 text-sm text-leaf">per month, to promise exposure</p>
             </div>
             <div className="rounded-xl bg-cream p-6 text-forest-deep">
-              <p className="text-sm uppercase tracking-wide text-moss">AthVia essentials</p>
-              <p className="mt-2 font-display text-4xl font-semibold">$0</p>
-              <p className="mt-2 text-sm text-moss">profile, film, verification, being found</p>
+              <p className="text-sm uppercase tracking-wide text-moss">AthVia</p>
+              <p className="mt-2 font-display text-4xl font-semibold">up to $20</p>
+              <p className="mt-2 text-sm text-moss">essentials free forever — paid extras never pass $20/mo</p>
             </div>
           </div>
         </div>
