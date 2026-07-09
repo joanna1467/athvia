@@ -4,7 +4,7 @@ const freeItems = [
   'Coach verification on your film',
   'Appear in recruiter searches',
   'School directory with activity badges',
-  'Recruiting fit score',
+  'AI recruiting guide — a chatbot with deep recruiting knowledge for all 19 sports, from eligibility rules to emailing coaches',
 ]
 
 const plusItems = [
