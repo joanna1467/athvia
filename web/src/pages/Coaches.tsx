@@ -26,8 +26,8 @@ const perks = [
     body: 'Programs that log in and engage regularly are marked "Active" and surface higher in athlete searches. Free to earn, no cost to maintain.',
   },
   {
-    title: 'Free for coaches, always',
-    body: 'Searching, watchlisting, verifying film, and posting your program page cost nothing. We only charge athletes for optional AI extras.',
+    title: 'Free to start, Pro when you need it',
+    body: 'Searching, verifying film, and posting your program page are free. Recruiter Pro adds automated target lists, sport-specific filters, and watchlist alerts for $24/mo.',
   },
 ]
 
