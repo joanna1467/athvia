@@ -56,6 +56,12 @@ export default function Landing() {
           <img src={hero('basketball.png')} alt="" className="floaty-slow absolute right-[1%] top-12 w-14 rotate-2 xl:right-[3%] xl:w-24" />
           <img src={hero('football.png')} alt="" className="floaty absolute bottom-36 right-[6%] hidden w-14 -rotate-12 xl:block" />
           <img src={hero('rowing.png')} alt="" className="floaty-fast absolute -right-10 bottom-4 w-44 -rotate-2 xl:bottom-8 xl:w-60" />
+          <img src={hero('gymnast.png')} alt="" className="floaty-fast absolute bottom-32 left-[3%] w-12 -rotate-3 xl:left-[6%] xl:w-16" />
+          <img src={hero('ballet.png')} alt="" className="floaty-slow absolute bottom-28 right-[1%] w-9 rotate-2 xl:w-12" />
+          <img src={hero('softball.png')} alt="" className="floaty absolute left-[13%] top-24 hidden w-8 rotate-12 xl:block" />
+          <img src={hero('baseball.png')} alt="" className="floaty-slow absolute right-[14%] top-28 hidden w-8 -rotate-12 xl:block" />
+          <img src={hero('soccer.png')} alt="" className="floaty absolute bottom-10 left-[19%] hidden w-12 rotate-6 xl:block" />
+          <img src={hero('rugby.png')} alt="" className="floaty-fast absolute bottom-24 right-[24%] hidden w-12 rotate-6 xl:block" />
         </div>
         <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 text-center md:pt-24">
           <p className="mx-auto mb-6 w-fit rounded-full border border-line bg-cream px-4 py-1 text-sm font-medium text-moss">
