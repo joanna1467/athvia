@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { athletes } from '../data/people'
 
 const img = (f: string) => `${import.meta.env.BASE_URL}${f}`
 
@@ -10,18 +11,6 @@ const sports = [
   'Volleyball', 'Water polo', 'Wrestling',
 ]
 const gradYears = ['2026', '2027', '2028', '2029', '2030']
-
-const athletes = [
-  {
-    slug: 'alina-fang',
-    name: 'Alina Fang',
-    photo: 'team/alina.jpg',
-    sport: 'Competitive dance',
-    gradYear: '2027',
-    location: 'San Francisco, CA',
-    status: 'Being recruited',
-  },
-]
 
 const inputCls =
   'w-full rounded-lg border border-line bg-cream px-3 py-2 font-display text-sm text-forest-deep placeholder:text-moss/60 focus:border-forest focus:outline-none'
@@ -37,7 +26,8 @@ export default function Explore() {
     (a) =>
       (!sport || a.sport === sport) &&
       (!gradYear || a.gradYear === gradYear) &&
-      (!location || a.location.toLowerCase().includes(location.toLowerCase())),
+      (!location ||
+        `${a.city}, ${a.state}`.toLowerCase().includes(location.toLowerCase())),
   )
 
   return (
@@ -99,7 +89,13 @@ export default function Explore() {
               to={`/athlete/${a.slug}`}
               className="group overflow-hidden rounded-xl border border-line bg-cream transition-colors hover:border-forest"
             >
-              <img src={img(a.photo)} alt={a.name} className="aspect-[4/5] w-full object-cover object-[center_30%]" />
+              {a.photo ? (
+                <img src={img(a.photo)} alt={a.name} className="aspect-[4/5] w-full object-cover object-[center_30%]" />
+              ) : (
+                <div className="flex aspect-[4/5] w-full items-center justify-center bg-leaf/50 font-display text-5xl font-semibold text-forest">
+                  {a.initials}
+                </div>
+              )}
               <div className="p-4">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="font-semibold text-forest">{a.name}</h3>
@@ -108,7 +104,7 @@ export default function Explore() {
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-moss">{a.sport}</p>
-                <p className="text-sm text-moss">Class of {a.gradYear} · {a.location}</p>
+                <p className="text-sm text-moss">Class of {a.gradYear} · {a.city}, {a.state}</p>
               </div>
             </Link>
           ))}

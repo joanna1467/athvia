@@ -7,6 +7,7 @@ import Landing from './pages/Landing'
 import Explore from './pages/Explore'
 import Profile from './pages/Profile'
 import Coaches from './pages/Coaches'
+import CoachProfile from './pages/CoachProfile'
 import Schools from './pages/Schools'
 import Events from './pages/Events'
 import Pricing from './pages/Pricing'
@@ -26,8 +27,9 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<App />}>
           <Route index element={<Landing />} />
           <Route path="explore" element={<Explore />} />
-          <Route path="athlete/alina-fang" element={<Profile />} />
+          <Route path="athlete/:slug" element={<Profile />} />
           <Route path="coaches" element={<Coaches />} />
+          <Route path="coach/:slug" element={<CoachProfile />} />
           <Route path="schools" element={<Schools />} />
           <Route path="events" element={<Events />} />
           <Route path="pricing" element={<Pricing />} />

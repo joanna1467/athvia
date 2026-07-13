@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const steps = [
   {
     n: '1',
@@ -61,6 +63,20 @@ export default function Coaches() {
             <p className="mt-2 text-moss">{s.body}</p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-16 rounded-xl border border-line bg-cream p-6 text-center">
+        <h2 className="text-xl font-semibold text-forest">See an example coach profile</h2>
+        <p className="mx-auto mt-2 max-w-xl text-moss">
+          Here's what a verified program page looks like to athletes browsing
+          AthVia.
+        </p>
+        <Link
+          to="/coach/rebecca-lin"
+          className="mt-4 inline-block rounded-lg bg-forest px-6 py-2.5 font-medium text-cream hover:bg-forest-deep"
+        >
+          View sample coach profile
+        </Link>
       </div>
     </section>
   )
