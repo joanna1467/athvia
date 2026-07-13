@@ -19,7 +19,7 @@ const links = [
   { to: '/coaches', label: 'Coaches' },
   { to: '/schools', label: 'Schools' },
   { to: '/events', label: 'Events' },
-  { to: '/pricing', label: 'Pricing' },
+  { to: '/pricing', label: 'Plans' },
   { to: '/about', label: 'About' },
 ]
 

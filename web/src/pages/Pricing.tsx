@@ -21,7 +21,7 @@ const recruiterItems = [
 export default function Pricing() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-center text-4xl font-semibold text-forest">Pricing</h1>
+      <h1 className="text-center text-4xl font-semibold text-forest">Plans &amp; subscriptions</h1>
       <p className="mx-auto mt-3 max-w-xl text-center text-moss">
         Everything an athlete needs to be recruited is free, forever. Paid
         plans add smarter tools on top — one for athletes, one for coaches.
