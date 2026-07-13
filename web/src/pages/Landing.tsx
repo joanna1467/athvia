@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: 'Your data is yours',
-    body: 'We never sell your information. Your profile is visible only when you choose, and you can export or delete everything, anytime.',
+    body: 'We never sell your information. Your profile is visible only when you choose, and you control exactly what you share.',
   },
 ]
 

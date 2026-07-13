@@ -334,8 +334,7 @@ export default function SignIn() {
       )}
 
       <p className="mt-8 text-center text-xs text-moss">
-        We never sell your data. You control what recruiters see, and you can
-        delete your account anytime.
+        We never sell your data. You control what recruiters see.
       </p>
     </section>
   )

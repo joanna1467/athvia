@@ -69,7 +69,7 @@ export default function App() {
               <p className="font-medium text-forest-deep">Our privacy pledge</p>
               <p className="mt-2">
                 We never sell your data. Recruiters see only what you choose to
-                share, and you can delete everything, anytime.
+                share.
               </p>
             </div>
           </div>
