@@ -5,6 +5,7 @@ import './index.css'
 import App from './App'
 import Landing from './pages/Landing'
 import Explore from './pages/Explore'
+import Profile from './pages/Profile'
 import Coaches from './pages/Coaches'
 import Schools from './pages/Schools'
 import Events from './pages/Events'
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<App />}>
           <Route index element={<Landing />} />
           <Route path="explore" element={<Explore />} />
+          <Route path="athlete/alina-fang" element={<Profile />} />
           <Route path="coaches" element={<Coaches />} />
           <Route path="schools" element={<Schools />} />
           <Route path="events" element={<Events />} />
