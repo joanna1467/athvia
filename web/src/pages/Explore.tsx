@@ -99,7 +99,7 @@ export default function Explore() {
               to={`/athlete/${a.slug}`}
               className="group overflow-hidden rounded-xl border border-line bg-cream transition-colors hover:border-forest"
             >
-              <img src={img(a.photo)} alt={a.name} className="h-64 w-full object-cover object-top" />
+              <img src={img(a.photo)} alt={a.name} className="h-72 w-full bg-leaf/30 object-contain" />
               <div className="p-4">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="font-semibold text-forest">{a.name}</h3>
