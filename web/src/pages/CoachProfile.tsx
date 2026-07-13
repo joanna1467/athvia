@@ -54,15 +54,10 @@ export default function CoachProfile() {
       </div>
 
       {/* verification explainer */}
-      <div className="mt-6 rounded-xl border border-line bg-leaf/30 p-6">
-        <h2 className="text-lg font-semibold text-forest">Why this coach is verified</h2>
-        <p className="mt-2 text-sm text-moss">
-          {c.name} signed up with a {c.school} email address that matches our
-          verified school directory, so their identity and program are confirmed.
-          Only verified coaches can confirm athlete highlights — that's how AthVia
-          keeps film trustworthy.
-        </p>
-      </div>
+      <p className="mt-4 rounded-lg bg-leaf/30 px-4 py-2 text-xs text-moss">
+        ✓ Verified via a {c.school} school email — only verified coaches can
+        confirm athlete highlights.
+      </p>
 
       {/* about */}
       <div className="mt-6 rounded-xl border border-line bg-cream p-6">
