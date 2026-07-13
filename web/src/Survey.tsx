@@ -25,7 +25,17 @@ export default function Survey() {
   const [comment, setComment] = useState('')
 
   useEffect(() => {
-    if (localStorage.getItem('athvia-survey')) return
+    const snoozeDays = { dismissed: 7, done: 30 }
+    const raw = localStorage.getItem('athvia-survey')
+    if (raw) {
+      try {
+        const { status, ts } = JSON.parse(raw)
+        const days = snoozeDays[status as keyof typeof snoozeDays] ?? 7
+        if (Date.now() - ts < days * 86_400_000) return
+      } catch {
+        // old permanent-flag format: fall through and show again
+      }
+    }
     const onScroll = () => {
       if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 120) {
         setOpen(true)
@@ -39,12 +49,12 @@ export default function Survey() {
   if (!open) return null
 
   const dismiss = () => {
-    localStorage.setItem('athvia-survey', 'dismissed')
+    localStorage.setItem('athvia-survey', JSON.stringify({ status: 'dismissed', ts: Date.now() }))
     setOpen(false)
   }
 
   async function submit() {
-    localStorage.setItem('athvia-survey', 'done')
+    localStorage.setItem('athvia-survey', JSON.stringify({ status: 'done', ts: Date.now() }))
     if (supabase) {
       await supabase.from('feedback').insert({
         role,
