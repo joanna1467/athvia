@@ -27,19 +27,19 @@ const fitRows = [
     level: 'NAIA',
     verdict: 'Strong fit',
     tone: 'strong',
-    note: 'Her training level, captaincy, and national-stage experience line up with NAIA competitive dance rosters.',
+    note: 'NAIA sponsors competitive dance as an emerging varsity sport — her training level, captaincy, and national-stage experience line up with these rosters.',
   },
   {
     level: 'NCAA D3',
-    verdict: 'Competitive',
-    tone: 'mid',
-    note: 'A realistic option — her academics open doors at selective D3 programs with dance teams.',
+    verdict: 'Strong fit',
+    tone: 'strong',
+    note: 'Most D3 schools field competitive dance teams (NDA/UDA circuits), and her academics make even the most selective D3 programs realistic.',
   },
   {
     level: 'NCAA D2',
-    verdict: 'Developing',
-    tone: 'low',
-    note: 'Reachable with another strong competition season and updated film.',
+    verdict: 'Competitive',
+    tone: 'mid',
+    note: 'D2 schools also field competitive dance teams — reachable with another strong competition season and updated film.',
   },
 ]
 
@@ -62,7 +62,7 @@ export default function Profile() {
           <img
             src={img('team/alina.jpg')}
             alt="Alina Fang"
-            className="h-40 w-40 flex-shrink-0 rounded-2xl object-cover"
+            className="h-64 w-48 flex-shrink-0 rounded-2xl object-cover object-top"
           />
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-3">
@@ -125,7 +125,10 @@ export default function Profile() {
         </div>
         <p className="mt-2 text-sm text-moss">
           Based on Alina's training level, competition history, academics, and
-          graduation year — with the reasons, not a sales pitch.
+          graduation year — with the reasons, not a sales pitch. College dance is
+          organized through the NDA and UDA circuits rather than as an NCAA
+          championship sport, so fit reflects where her profile matches real
+          teams at each level.
         </p>
 
         <div className="mt-4 rounded-lg bg-sage p-4">
