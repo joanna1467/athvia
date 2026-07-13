@@ -24,7 +24,9 @@ const athletes = [
 ]
 
 const inputCls =
-  'w-full rounded-lg border border-line bg-cream px-3 py-2 text-sm text-forest-deep placeholder:text-moss/60 focus:border-forest focus:outline-none'
+  'w-full rounded-lg border border-line bg-cream px-3 py-2 font-display text-sm text-forest-deep placeholder:text-moss/60 focus:border-forest focus:outline-none'
+
+const labelCls = 'mb-1 block font-display text-xs font-medium text-moss'
 
 export default function Explore() {
   const [sport, setSport] = useState('')
@@ -49,21 +51,21 @@ export default function Explore() {
       {/* search / filter bar */}
       <div className="mt-8 grid gap-3 rounded-xl border border-line bg-cream p-4 sm:grid-cols-3">
         <div>
-          <label className="mb-1 block text-xs font-medium text-moss">Sport</label>
+          <label className={labelCls}>Sport</label>
           <select className={inputCls} value={sport} onChange={(e) => setSport(e.target.value)}>
             <option value="">All sports</option>
             {sports.map((s) => <option key={s}>{s}</option>)}
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-moss">Grad year</label>
+          <label className={labelCls}>Grad year</label>
           <select className={inputCls} value={gradYear} onChange={(e) => setGradYear(e.target.value)}>
             <option value="">All years</option>
             {gradYears.map((y) => <option key={y}>{y}</option>)}
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-moss">Location</label>
+          <label className={labelCls}>Location</label>
           <input
             className={inputCls}
             placeholder="City or state"
