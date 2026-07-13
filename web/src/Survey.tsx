@@ -98,7 +98,7 @@ export default function Survey() {
           </div>
 
           <p className="mt-4 text-sm font-medium text-forest-deep">
-            2. How likely would you be to use AthVia for recruiting?
+            2. How satisfied are you with AthVia's services?
           </p>
           <div className="mt-2 flex gap-2">
             {[1, 2, 3, 4, 5].map((n) => (
@@ -106,7 +106,7 @@ export default function Survey() {
                 {n}
               </button>
             ))}
-            <span className="self-center text-xs text-moss">5 = definitely</span>
+            <span className="self-center text-xs text-moss">5 = very satisfied</span>
           </div>
 
           <p className="mt-4 text-sm font-medium text-forest-deep">
