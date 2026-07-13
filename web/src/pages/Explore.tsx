@@ -1,15 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { athletes } from '../data/people'
+import { sports } from '../data/sports'
 
 const img = (f: string) => `${import.meta.env.BASE_URL}${f}`
 
-const sports = [
-  'Baseball', 'Basketball', 'Beach volleyball', 'Competitive dance', 'Cross country',
-  'Field hockey', 'Football', 'Golf', 'Gymnastics', 'Ice hockey', 'Lacrosse',
-  'Rowing', 'Soccer', 'Softball', 'Swim', 'Tennis', 'Track and field',
-  'Volleyball', 'Water polo', 'Wrestling',
-]
 const gradYears = ['2026', '2027', '2028', '2029', '2030']
 
 const inputCls =

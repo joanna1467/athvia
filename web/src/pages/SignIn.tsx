@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 
-const sports = [
-  'Baseball', 'Basketball', 'Beach volleyball', 'Cross country', 'Field hockey',
-  'Football', 'Golf', 'Gymnastics', 'Ice hockey', 'Lacrosse', 'Rowing',
-  'Soccer', 'Softball', 'Swim', 'Tennis', 'Track and field', 'Volleyball',
-  'Water polo', 'Wrestling',
-]
+import { sports } from '../data/sports'
 
 const gradYears = ['2026', '2027', '2028', '2029', '2030']
 

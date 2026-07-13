@@ -43,7 +43,7 @@ export const athletes: Athlete[] = [
     name: 'Alina Fang',
     photo: 'team/alina.jpg',
     initials: 'AF',
-    sport: 'Competitive dance',
+    sport: 'Dance',
     gradYear: '2027',
     city: 'San Francisco',
     state: 'CA',

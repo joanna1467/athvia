@@ -1,11 +1,5 @@
 import { Link } from 'react-router-dom'
-
-const sports = [
-  'Baseball', 'Basketball', 'Beach volleyball', 'Cross country', 'Field hockey',
-  'Football', 'Golf', 'Gymnastics', 'Ice hockey', 'Lacrosse', 'Rowing',
-  'Soccer', 'Softball', 'Swim', 'Tennis', 'Track and field', 'Volleyball',
-  'Water polo', 'Wrestling',
-]
+import { sportGroups } from '../data/sports'
 
 const features = [
   {
@@ -149,16 +143,26 @@ export default function Landing() {
       <section className="mx-auto max-w-6xl px-4 py-16 text-center">
         <h2 className="text-3xl font-semibold text-forest">Built for your sport</h2>
         <p className="mx-auto mt-3 max-w-xl text-moss">
-          Nineteen sports at launch — including the ones other platforms overlook.
+          From the biggest sports to the most overlooked — every athlete deserves
+          a fair shot at getting recruited.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {sports.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-line bg-cream px-4 py-1.5 text-sm font-medium text-forest-deep"
-            >
-              {s}
-            </span>
+        <div className="mt-10 space-y-8">
+          {sportGroups.map((group) => (
+            <div key={group.label}>
+              <p className="text-sm font-medium uppercase tracking-wide text-moss">
+                {group.label}
+              </p>
+              <div className="mt-3 flex flex-wrap justify-center gap-3">
+                {group.sports.map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-line bg-cream px-4 py-1.5 text-sm font-medium text-forest-deep"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
         <Link
