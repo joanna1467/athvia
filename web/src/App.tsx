@@ -1,4 +1,5 @@
 import { NavLink, Link, Outlet } from 'react-router-dom'
+import Survey from './Survey'
 
 function Wordmark() {
   return (
@@ -78,6 +79,7 @@ export default function App() {
           </p>
         </div>
       </footer>
+      <Survey />
     </div>
   )
 }

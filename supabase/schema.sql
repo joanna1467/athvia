@@ -62,6 +62,15 @@ create table watchlists (
   primary key (coach_id, athlete_id)
 );
 
+create table feedback (
+  id uuid primary key default gen_random_uuid(),
+  role text,
+  likelihood int check (likelihood between 1 and 5),
+  priority text,
+  comment text,
+  created_at timestamptz default now()
+);
+
 create table events (
   id uuid primary key default gen_random_uuid(),
   title text not null,
@@ -152,6 +161,10 @@ create policy "verified coaches verify highlights" on highlights
 
 create policy "coaches manage own watchlist" on watchlists
   for all using (auth.uid() = coach_id);
+
+alter table feedback enable row level security;
+create policy "anyone can submit feedback" on feedback
+  for insert with check (true);
 
 create policy "schools readable by all" on schools
   for select using (true);
