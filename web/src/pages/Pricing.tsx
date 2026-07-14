@@ -78,7 +78,7 @@ export default function Pricing() {
         <div className="rounded-xl border-2 border-ochre bg-cream p-8">
           <h2 className="text-2xl font-semibold text-forest">For coaches</h2>
           <p className="mt-1 text-sm font-medium text-moss">Every recruiting tool included</p>
-          <p className="mt-3 font-display text-4xl font-semibold text-forest-deep">Free</p>
+          <p className="mt-3 font-display text-4xl font-semibold text-forest-deep">$0</p>
           <ul className="mt-6 space-y-3 text-moss">
             {coachItems.map((i) => (
               <li key={i} className="flex gap-2">
