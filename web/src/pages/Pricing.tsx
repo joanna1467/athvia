@@ -4,7 +4,7 @@ const freeItems = [
   'Coach verification on your film',
   'Appear in recruiter searches',
   'School directory with activity badges',
-  'AI recruiting guide — a chatbot with deep recruiting knowledge for all 19 sports, from eligibility rules to emailing coaches',
+  'AI recruiting guide — a chatbot with deep recruiting knowledge for all our sports, from eligibility rules to emailing coaches',
 ]
 
 const plusItems = [
@@ -12,7 +12,10 @@ const plusItems = [
   'AI College List Builder — personalized school recommendations matching your stats, budget, and interests',
 ]
 
-const recruiterItems = [
+const coachItems = [
+  'Verified program page with school-email verification',
+  'Search and discover recruitable athletes',
+  'Verify athlete film',
   'Automated Target List — enter exact roster needs (e.g., "left-handed fencer, 2027 grad, 3.5+ GPA") and get a live dashboard of matching athletes',
   'Advanced trait and skill filtering — sport-specific metrics like 2k erg times for rowing or position skills for niche sports',
   'Roster depth analytics and watchlist alerts — instant notifications when a saved athlete posts new verified stats, better film, or an improved GPA',
@@ -23,9 +26,21 @@ export default function Pricing() {
     <section className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-center text-4xl font-semibold text-forest">Plans &amp; subscriptions</h1>
       <p className="mx-auto mt-3 max-w-xl text-center text-moss">
-        Everything an athlete needs to be recruited is free, forever. Paid
-        plans add smarter tools on top — one for athletes, one for coaches.
+        Everything an athlete needs to be recruited is free, forever — and
+        coaches pay nothing. One optional plan adds smarter tools for athletes.
       </p>
+
+      {/* fairness pledge */}
+      <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-forest bg-forest p-6 text-center text-cream">
+        <p className="font-display text-xl font-semibold">
+          Paying never buys visibility.
+        </p>
+        <p className="mt-2 text-sm text-leaf">
+          Athletes are never ranked higher because they paid more. Visibility is
+          based on verified fit, profile quality, and program needs — not
+          subscription level.
+        </p>
+      </div>
 
       <div className="mx-auto mt-12 grid gap-8 lg:grid-cols-3">
         <div className="rounded-xl border border-line bg-cream p-8">
@@ -43,7 +58,7 @@ export default function Pricing() {
 
         <div className="rounded-xl border-2 border-forest bg-cream p-8">
           <h2 className="text-2xl font-semibold text-forest">AthVia Plus</h2>
-          <p className="mt-1 text-sm font-medium text-moss">For athletes who want an edge</p>
+          <p className="mt-1 text-sm font-medium text-moss">For athletes who want smarter tools</p>
           <p className="mt-3 font-display text-4xl font-semibold text-forest-deep">
             $9.99<span className="text-lg text-moss">/mo</span>
           </p>
@@ -55,17 +70,18 @@ export default function Pricing() {
               </li>
             ))}
           </ul>
+          <p className="mt-6 rounded-lg bg-sage px-4 py-2 text-xs text-moss">
+            Plus tools help you research schools — they never change how
+            coaches see you.
+          </p>
         </div>
 
         <div className="rounded-xl border-2 border-ochre bg-cream p-8">
-          <h2 className="text-2xl font-semibold text-forest">AthVia Recruiter Pro</h2>
-          <p className="mt-1 text-sm font-medium text-moss">For college coaches</p>
-          <p className="mt-3 font-display text-4xl font-semibold text-forest-deep">
-            $24<span className="text-lg text-moss">/mo</span>
-          </p>
-          <p className="mt-2 text-sm text-moss">Everything free coaches get, plus:</p>
-          <ul className="mt-4 space-y-3 text-moss">
-            {recruiterItems.map((i) => (
+          <h2 className="text-2xl font-semibold text-forest">For coaches</h2>
+          <p className="mt-1 text-sm font-medium text-moss">Every recruiting tool included</p>
+          <p className="mt-3 font-display text-4xl font-semibold text-forest-deep">Free</p>
+          <ul className="mt-6 space-y-3 text-moss">
+            {coachItems.map((i) => (
               <li key={i} className="flex gap-2">
                 <span className="text-ochre">✓</span> {i}
               </li>

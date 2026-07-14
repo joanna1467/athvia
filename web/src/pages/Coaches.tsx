@@ -29,7 +29,7 @@ const perks = [
   },
   {
     title: 'Free to start, Pro when you need it',
-    body: 'Searching, verifying film, and posting your program page are free. Recruiter Pro adds automated target lists, sport-specific filters, and watchlist alerts for $24/mo.',
+    body: 'Everything is free for coaches — searching, verifying film, your program page, automated target lists, sport-specific filters, and watchlist alerts. No subscription, ever.',
   },
 ]
 

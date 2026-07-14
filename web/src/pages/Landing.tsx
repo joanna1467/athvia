@@ -133,8 +133,8 @@ export default function Landing() {
             </div>
             <div className="rounded-xl bg-cream p-6 text-forest-deep">
               <p className="text-sm uppercase tracking-wide text-moss">AthVia</p>
-              <p className="mt-2 font-display text-4xl font-semibold">up to $24</p>
-              <p className="mt-2 text-sm text-moss">essentials free forever — our priciest plan is $24/mo</p>
+              <p className="mt-2 font-display text-4xl font-semibold">up to $9.99</p>
+              <p className="mt-2 text-sm text-moss">essentials free forever — coaches pay nothing, and our only paid plan is $9.99/mo</p>
             </div>
           </div>
         </div>
