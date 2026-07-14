@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { coaches } from '../data/people'
 
 const steps = [
   {
@@ -65,18 +66,36 @@ export default function Coaches() {
         ))}
       </div>
 
-      <div className="mt-16 rounded-xl border border-line bg-cream p-6 text-center">
-        <h2 className="text-xl font-semibold text-forest">See an example coach profile</h2>
-        <p className="mx-auto mt-2 max-w-xl text-moss">
-          Here's what a verified program page looks like to athletes browsing
-          AthVia.
-        </p>
-        <Link
-          to="/coach/rebecca-lin"
-          className="mt-4 inline-block rounded-lg bg-forest px-6 py-2.5 font-medium text-cream hover:bg-forest-deep"
-        >
-          View sample coach profile
-        </Link>
+      <h2 className="mt-16 text-2xl font-semibold text-forest">Programs on AthVia</h2>
+      <p className="mt-2 max-w-xl text-moss">
+        Verified coaches actively recruiting on the platform right now.
+      </p>
+      <div className="mt-6 grid gap-6 sm:grid-cols-2">
+        {coaches.map((c) => (
+          <Link
+            key={c.slug}
+            to={`/coach/${c.slug}`}
+            className="flex items-center gap-4 rounded-xl border border-line bg-cream p-5 transition-colors hover:border-forest"
+          >
+            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-leaf/50 font-display text-xl font-semibold text-forest">
+              {c.initials}
+            </div>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="font-semibold text-forest">{c.name}</h3>
+                {c.verified && (
+                  <span className="rounded-full bg-forest px-2 py-0.5 text-[10px] font-medium text-cream">
+                    Verified ✓
+                  </span>
+                )}
+              </div>
+              <p className="truncate text-sm text-moss">{c.title}</p>
+              <p className="truncate text-sm text-moss">
+                {c.school} · {c.division}
+              </p>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   )
