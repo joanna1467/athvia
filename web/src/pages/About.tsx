@@ -84,8 +84,24 @@ export default function About() {
           recruiting platform for the 90% of high school competitors headed to
           D3, D2, and NAIA programs, not just the D1 headlines.
         </p>
-        <p className="italic">
-          Our full story — why we created AthVia — is coming soon.
+        <h2 className="pt-4 text-2xl font-semibold text-forest">Our story</h2>
+        <p>
+          We founders are all student athletes who discovered a real gap in
+          recruiting for NAIA, Division 2, and Division 3. The platforms we
+          tried were built around the D1 dream — hundreds or thousands of
+          dollars for "exposure," rankings that reward whoever pays the most,
+          and little support for sports like dance, rowing, or fencing.
+        </p>
+        <p>
+          Yet most college athletes don't compete at D1 — they compete at NAIA,
+          D2, and D3 schools, where recruiting is just as real but far less
+          visible. Nobody was building for them. So we did.
+        </p>
+        <p>
+          AthVia is the platform we wished existed: honest fit scores instead of
+          sales pitches, coach-verified film instead of hype, and transparency
+          about which programs are actually recruiting — at a price a high
+          school student can afford. We're the 90% too, and this is for us.
         </p>
       </div>
 
