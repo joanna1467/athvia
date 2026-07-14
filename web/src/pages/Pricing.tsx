@@ -36,9 +36,8 @@ export default function Pricing() {
           Paying never buys visibility.
         </p>
         <p className="mt-2 text-sm text-leaf">
-          Athletes are never ranked higher because they paid more. Visibility is
-          based on verified fit, profile quality, and program needs — not
-          subscription level.
+          Visibility is based on verified fit, profile quality and program
+          needs&mdash;not subscription level.
         </p>
       </div>
 
