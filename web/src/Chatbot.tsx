@@ -173,6 +173,13 @@ export default function Chatbot() {
     const history: Msg[] = [...msgs, { role: 'user', text: q }]
     setMsgs(history)
     setInput('')
+    if (/cortisol/i.test(q)) {
+      setMsgs((m) => [...m, {
+        role: 'assistant',
+        text: 'Yes, AthVia is designed to be super low cortisol for the user to make the recruiting experience as stress free as possible. Our theme is green to represent calmness.',
+      }])
+      return
+    }
     setBusy(true)
     const ai = await aiAnswer(history)
     const reply = ai ?? scriptedAnswer(q)
