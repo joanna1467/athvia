@@ -56,19 +56,56 @@ export default function SignIn() {
 
   const totalSteps = role === 'athlete' ? 3 : 2
 
+  const toEnum = (s: string) => s.toLowerCase().replace(/ /g, '_')
+
+  async function saveRows(userId: string, meta: Record<string, unknown>) {
+    if (!supabase) return
+    const r = (meta.role as string) ?? role
+    await supabase.from('profiles').upsert({
+      id: userId,
+      role: r,
+      full_name: (meta.fullName as string) ?? '',
+      email: (meta.email as string) ?? '',
+    })
+    if (r === 'athlete') {
+      await supabase.from('athletes').upsert({
+        profile_id: userId,
+        sport: toEnum((meta.sport as string) ?? ''),
+        grad_year: parseInt((meta.gradYear as string) ?? '0', 10),
+        gpa: meta.gpa ? parseFloat(meta.gpa as string) : null,
+        city: (meta.city as string) || null,
+        state: (meta.state as string) || null,
+        target_divisions: (meta.divisions as string[]) ?? ['NAIA', 'D2', 'D3'],
+      })
+    } else {
+      await supabase.from('coaches').upsert({
+        profile_id: userId,
+        sport: toEnum((meta.sport as string) ?? ''),
+        title: (meta.title as string) || null,
+      })
+    }
+  }
+
   async function finish() {
     setError('')
     if (!supabase) {
       setDone(true)
       return
     }
-    const { error: err } = await supabase.auth.signUp({
+    const { password: _pw, ...meta } = form
+    const { data, error: err } = await supabase.auth.signUp({
       email: form.email,
       password: form.password,
-      options: { data: { full_name: form.fullName, role, ...form } },
+      options: { data: { full_name: form.fullName, role, ...meta } },
     })
-    if (err) setError(err.message)
-    else setDone(true)
+    if (err) {
+      setError(err.message)
+      return
+    }
+    if (data.session && data.user) {
+      await saveRows(data.user.id, { ...meta, role })
+    }
+    setDone(true)
   }
 
   async function signIn(e: React.FormEvent) {
@@ -78,12 +115,29 @@ export default function SignIn() {
       setError('Accounts are being connected this week — check back soon!')
       return
     }
-    const { error: err } = await supabase.auth.signInWithPassword({
+    const { data, error: err } = await supabase.auth.signInWithPassword({
       email: form.email,
       password: form.password,
     })
-    if (err) setError(err.message)
-    else window.location.href = import.meta.env.BASE_URL
+    if (err) {
+      setError(
+        err.message.toLowerCase().includes('not confirmed')
+          ? 'Your email is not confirmed yet — check your inbox for the confirmation link, then try again.'
+          : err.message,
+      )
+      return
+    }
+    if (data.user) {
+      const { data: existing } = await supabase
+        .from('profiles').select('id').eq('id', data.user.id).maybeSingle()
+      if (!existing) {
+        await saveRows(data.user.id, {
+          ...data.user.user_metadata,
+          email: data.user.email,
+        })
+      }
+    }
+    window.location.href = import.meta.env.BASE_URL
   }
 
   /* ---------- success screen ---------- */

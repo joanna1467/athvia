@@ -2,9 +2,10 @@
 -- Divisions: NAIA, D2, D3 only (no JUCO, no D1)
 
 create type division as enum ('NAIA','D2','D3');
-create type sport as enum ('baseball','basketball','beach_volleyball','cross_country',
-  'field_hockey','football','golf','gymnastics','ice_hockey','lacrosse','rowing',
-  'soccer','softball','swim','tennis','track_and_field','volleyball','water_polo','wrestling');
+create type sport as enum ('badminton','baseball','basketball','beach_volleyball','boxing',
+  'cheerleading','cross_country','dance','equestrian','fencing','field_hockey','football',
+  'golf','gymnastics','ice_hockey','lacrosse','rowing','rugby','skiing','soccer','softball',
+  'swim','table_tennis','tennis','track_and_field','volleyball','water_polo','wrestling');
 create type user_role as enum ('athlete','coach');
 
 create table profiles (
