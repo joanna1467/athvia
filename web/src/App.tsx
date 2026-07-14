@@ -1,5 +1,6 @@
 import { NavLink, Link, Outlet } from 'react-router-dom'
 import Survey from './Survey'
+import Chatbot from './Chatbot'
 
 function Wordmark() {
   return (
@@ -80,6 +81,7 @@ export default function App() {
         </div>
       </footer>
       <Survey />
+      <Chatbot />
     </div>
   )
 }
