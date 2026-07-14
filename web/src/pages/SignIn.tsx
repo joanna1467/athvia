@@ -97,9 +97,9 @@ export default function SignIn() {
         <p className="mt-3 text-moss">
           {role === 'coach'
             ? form.email.endsWith('.edu')
-              ? 'Your school email qualifies for instant verification. Once accounts go live this week, you can start searching and verifying film right away.'
-              : 'Your account will be reviewed for verification. Tip: signing up with your school (.edu) email gets you verified instantly.'
-            : 'Your profile is reserved. Once accounts go live this week, you can add stats, upload film, and get your recruiting fit score.'}
+              ? 'Your account is created, and your school email qualifies for verification. Sign in to start searching athletes and verifying film.'
+              : 'Your account is created and will be reviewed for verification. Tip: signing up with your school (.edu) email gets you verified fastest.'
+            : 'Your account is created! Sign in to build out your profile — stats, film, and your recruiting fit score are on the way.'}
         </p>
       </section>
     )
