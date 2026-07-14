@@ -25,21 +25,12 @@ export default function Pricing() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-center text-4xl font-semibold text-forest">Plans &amp; subscriptions</h1>
-      <p className="mx-auto mt-3 max-w-xl text-center text-moss">
+      <p className="mx-auto mt-3 max-w-2xl text-center text-moss">
         Everything an athlete needs to be recruited is free, forever — and
         coaches pay nothing. One optional plan adds smarter tools for athletes.
+        Visibility is based on verified fit, profile quality and program
+        needs&mdash;not subscription level.
       </p>
-
-      {/* fairness pledge */}
-      <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-forest bg-forest p-6 text-center text-cream">
-        <p className="font-display text-xl font-semibold">
-          Paying never buys visibility.
-        </p>
-        <p className="mt-2 text-sm text-leaf">
-          Visibility is based on verified fit, profile quality and program
-          needs&mdash;not subscription level.
-        </p>
-      </div>
 
       <div className="mx-auto mt-12 grid gap-8 lg:grid-cols-3">
         <div className="rounded-xl border border-line bg-cream p-8">
