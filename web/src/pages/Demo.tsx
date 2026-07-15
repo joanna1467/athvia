@@ -149,6 +149,22 @@ export default function Demo() {
   const [chat, setChat] = useState<{ q: string; a: string }[]>([])
   const [asking, setAsking] = useState(false)
 
+  // Curated answers so the suggestion chips always work, even at zero AI quota.
+  const suggestionAnswers: { match: string; a: string }[] = [
+    {
+      match: 'financial',
+      a: "College of Idaho and Concordia Irvine are likely your strongest financial fits — both are NAIA, so they can offer athletic dance scholarships that stack with your academic aid, and a 4.0/1600 makes you very attractive for merit money. Claremont-Mudd-Scripps and Tufts don't give athletic aid (D3), but their need- and merit-based packages can still bring costs down. Always run each school's net price calculator to compare real numbers.",
+    },
+    {
+      match: 'college of idaho',
+      a: "College of Idaho already watchlisted you, so you're on their radar — reply fast. Lead your message with your NDA/UDA competition results and a link to your best solo footage, since they recruit funded varsity dancers. Mention your 4.0 and pre-med interest too; academics-first programs love a dancer who'll thrive in the classroom. Because Coach Dana Whitfield is on AthVia, you can message the program directly.",
+    },
+    {
+      match: 'pre-med',
+      a: "For pre-med strength, Claremont-Mudd-Scripps and Tufts lead your list — both have excellent science programs and medical-school placement, and your scores fit them. College of Idaho also has a strong health-sciences track with small classes and good advising, plus varsity dance. If pre-med is the priority, target schools where you can compete in dance without sacrificing lab and research access.",
+    },
+  ]
+
   async function askFollowUp(question: string) {
     const q = question.trim()
     if (!q || asking) return
@@ -171,7 +187,10 @@ export default function Demo() {
       if (!res.ok || !data.reply || String(data.reply).startsWith('Sorry')) throw new Error('ai failed')
       answer = String(data.reply).replace(/\*\*/g, '').trim()
     } catch {
-      answer = "I'm having trouble reaching AI right now — try again in a moment, or use the 💬 recruiting guide in the corner for general recruiting questions."
+      const curated = suggestionAnswers.find((s) => q.toLowerCase().includes(s.match))
+      answer =
+        curated?.a ??
+        "I'm having trouble reaching AI right now — try again in a moment, or use the 💬 recruiting guide in the corner for general recruiting questions."
     }
     setChat((c) => [...c, { q, a: answer }])
     setAsking(false)
