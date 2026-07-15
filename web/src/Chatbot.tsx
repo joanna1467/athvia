@@ -167,7 +167,8 @@ async function aiAnswer(messages: Msg[]): Promise<string | null> {
     clearTimeout(timer)
     if (!res.ok) return null
     const data = await res.json()
-    return typeof data.reply === 'string' ? data.reply : null
+    if (typeof data.reply !== 'string' || data.reply.startsWith('Sorry —')) return null
+    return data.reply
   } catch {
     return null
   }
