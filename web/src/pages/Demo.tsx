@@ -34,6 +34,103 @@ const fallbackList = `1. Concordia University Irvine (NAIA, CA) — Target. NAIA
 4. Marian University (NAIA, IN) — Target. Established NAIA program with a strong dance-team culture and scholarship stacking for high-GPA athletes.
 5. Tufts University (D3, MA) — Reach for admission, strong fit for you. Elite academics your scores support, with nationally competitive club and team dance.`
 
+/* Per-school detail: verified AthVia coach (if any) + how to find the
+   athletics staff directory. A precomputed summary keeps the demo safe if
+   the AI quota is exhausted. */
+type SchoolMeta = {
+  name: string
+  coachSlug?: string
+  coachName?: string
+  coachRole?: string
+  fallbackSummary: string
+}
+
+const schoolMeta: SchoolMeta[] = [
+  {
+    name: 'College of Idaho',
+    coachSlug: 'dana-whitfield',
+    coachName: 'Dana Whitfield',
+    coachRole: 'Head Coach, Competitive Cheer & Dance',
+    fallbackSummary:
+      "College of Idaho fields a varsity NAIA competitive dance program with real scholarships — a rare, funded home for a dancer like Alina. Academically, its pre-med / health sciences track and small class sizes fit her 4.0/1600 profile and biology interest. Because Coach Dana Whitfield is verified on AthVia, Alina can message the program directly instead of guessing at an inbox.",
+  },
+  {
+    name: 'Concordia University Irvine',
+    fallbackSummary:
+      "Concordia Irvine is an in-state NAIA option with competitive dance and strong health-sciences advising for pre-med students. For a San Francisco dancer, staying in California keeps travel and cost down. No AthVia coach here yet — the athletics staff directory is the way in.",
+  },
+  {
+    name: 'Claremont-Mudd-Scripps',
+    fallbackSummary:
+      "The CMS consortium is one of the most academically selective D3 setups in the country — Alina's 4.0/1600 is exactly the profile it admits, and the pre-med pipeline is excellent. Dance runs through strong club and team programs rather than varsity. In California, so it stays close to home.",
+  },
+  {
+    name: 'Marian University',
+    fallbackSummary:
+      "Marian is an established NAIA program with a strong dance-team culture and the ability to stack athletic and academic scholarships — valuable for a high-GPA athlete. Its health-sciences offerings support a pre-med path. Reach out through the athletics staff directory.",
+  },
+  {
+    name: 'Tufts University',
+    fallbackSummary:
+      "Tufts is a reach for admission, but Alina's scores genuinely support it, and its pre-med reputation is elite. Dance is nationally competitive at the club and team level rather than NAIA varsity. It's on the East Coast, so factor in travel.",
+  },
+  {
+    name: 'Kenyon College',
+    coachSlug: 'rebecca-lin',
+    coachName: 'Rebecca Lin',
+    coachRole: "Head Coach, Women's Rowing",
+    fallbackSummary:
+      "Kenyon is a top academic D3 with strong sciences — a great fit for Alina's transcript and pre-med interest. Its rowing program has a verified AthVia coach; dance is club-level here.",
+  },
+  {
+    name: 'Williams College',
+    coachSlug: 'james-oconnor',
+    coachName: "James O'Connor",
+    coachRole: "Head Coach, Men's Soccer",
+    fallbackSummary:
+      "Williams is one of the strongest academic D3s in the country and admits profiles like Alina's. Dance is club and team based. A verified AthVia coach is on campus in another sport.",
+  },
+  {
+    name: 'Grand Valley State University',
+    coachSlug: 'marcus-hale',
+    coachName: 'Marcus Hale',
+    coachRole: 'Head Coach, Track & Field',
+    fallbackSummary:
+      "Grand Valley is a large, athletics-strong D2 with broad health-sciences programs. It has a verified AthVia coach in track & field; dance runs through spirit programs here.",
+  },
+]
+
+function findMeta(head: string): SchoolMeta | undefined {
+  return schoolMeta.find((m) => head.includes(m.name))
+}
+
+function directorySearch(school: string): string {
+  return `https://www.google.com/search?q=${encodeURIComponent(
+    school + ' athletics staff directory dance coach',
+  )}`
+}
+
+async function fetchSchoolSummary(head: string): Promise<string | null> {
+  if (!SUPA_URL || !SUPA_KEY) return null
+  const prompt = `Write a short, honest 3-sentence summary of ${head} for Alina Fang — a competitive dancer, Class of 2027, 4.0 GPA / 1600 SAT, interested in pre-med / biology, from San Francisco. Cover: (1) what she might study there and the academic fit, (2) the dance situation (NAIA varsity vs NDA/UDA club/team), (3) location/cost angle for a California student. Be honest and do not invent specific facts, tuition numbers, or coach names. Respond with only the 3 sentences, no intro.`
+  try {
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), 15000)
+    const res = await fetch(`${SUPA_URL}/functions/v1/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${SUPA_KEY}` },
+      body: JSON.stringify({ messages: [{ role: 'user', text: prompt }] }),
+      signal: ctrl.signal,
+    })
+    clearTimeout(timer)
+    const data = await res.json()
+    if (!res.ok || !data.reply || String(data.reply).startsWith('Sorry')) return null
+    return String(data.reply).replace(/\*\*/g, '').trim()
+  } catch {
+    return null
+  }
+}
+
 export default function Demo() {
   const [budget, setBudget] = useState('30000')
   const [region, setRegion] = useState('West Coast preferred, open to anywhere')
@@ -41,6 +138,27 @@ export default function Demo() {
   const [list, setList] = useState('')
   const [building, setBuilding] = useState(false)
   const [aiPowered, setAiPowered] = useState(true)
+
+  const [openSchool, setOpenSchool] = useState<{ head: string; meta?: SchoolMeta } | null>(null)
+  const [summary, setSummary] = useState('')
+  const [summaryLoading, setSummaryLoading] = useState(false)
+  const [summaryAi, setSummaryAi] = useState(false)
+
+  async function openSchoolDetail(head: string) {
+    const meta = findMeta(head)
+    setOpenSchool({ head, meta })
+    setSummaryLoading(true)
+    setSummary('')
+    const ai = await fetchSchoolSummary(head)
+    if (ai) {
+      setSummary(ai)
+      setSummaryAi(true)
+    } else {
+      setSummary(meta?.fallbackSummary ?? 'Summary unavailable — try again in a moment.')
+      setSummaryAi(false)
+    }
+    setSummaryLoading(false)
+  }
 
   async function buildList() {
     setBuilding(true)
@@ -196,25 +314,94 @@ N. School Name (Division, State) — Match level (Target / Strong match / Reach)
             {(listItems.length ? listItems : [list]).map((item, i) => {
               const clean = item.replace(/^\d\.\s*/, '')
               const [head, ...rest] = clean.split('—')
+              const cleanHead = head.replace(/\*\*/g, '').trim()
+              const meta = findMeta(cleanHead)
               return (
-                <div key={i} className="rounded-lg border border-line bg-sage p-4">
-                  <p className="font-medium text-forest-deep">
-                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-forest font-display text-xs text-cream">{i + 1}</span>
-                    {head.replace(/\*\*/g, '').trim()}
+                <button key={i} onClick={() => openSchoolDetail(cleanHead)}
+                  className="group w-full rounded-lg border border-line bg-sage p-4 text-left transition-colors hover:border-forest">
+                  <p className="flex items-center gap-2 font-medium text-forest-deep">
+                    <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-forest font-display text-xs text-cream">{i + 1}</span>
+                    <span className="flex-1">{cleanHead}</span>
+                    {meta?.coachSlug && (
+                      <span className="rounded-full bg-forest px-2 py-0.5 text-[10px] font-medium text-cream">Coach on AthVia</span>
+                    )}
+                    <span className="text-moss group-hover:text-forest">→</span>
                   </p>
                   {rest.length > 0 && (
                     <p className="mt-1.5 text-sm text-moss">{rest.join('—').replace(/\*\*/g, '').trim()}</p>
                   )}
-                </div>
+                </button>
               )
             })}
             <p className="text-xs text-moss">
               {aiPowered ? '✦ Generated live by AthVia AI from your profile and programs on the platform.' : 'Sample recommendations.'}{' '}
-              Recommendations are guidance, not guarantees — always confirm details with schools directly.
+              Tap any school for an AI summary and how to reach them. Recommendations are guidance, not guarantees.
             </p>
           </div>
         )}
       </div>
+
+      {/* school detail modal */}
+      {openSchool && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-forest-deep/40 p-0 sm:items-center sm:p-4"
+          onClick={() => setOpenSchool(null)}>
+          <div className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-cream p-6 sm:rounded-2xl"
+            onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="text-xl font-semibold text-forest">{openSchool.head}</h3>
+              <button onClick={() => setOpenSchool(null)} aria-label="Close"
+                className="rounded p-1 text-moss hover:text-forest-deep">✕</button>
+            </div>
+
+            {/* AI summary */}
+            <div className="mt-4 rounded-xl bg-sage p-4">
+              <p className="text-xs font-medium uppercase tracking-wide text-moss">
+                ✦ AI summary — for Alina
+              </p>
+              {summaryLoading ? (
+                <p className="mt-2 text-sm text-moss">Writing a summary for your profile…</p>
+              ) : (
+                <p className="mt-2 text-sm text-forest-deep">{summary}</p>
+              )}
+              {!summaryLoading && (
+                <p className="mt-2 text-[11px] text-moss">
+                  {summaryAi ? 'Generated live by AthVia AI.' : 'AthVia summary.'} Always confirm details with the school.
+                </p>
+              )}
+            </div>
+
+            {/* contact / coach */}
+            <div className="mt-4">
+              <p className="text-xs font-medium uppercase tracking-wide text-moss">Get in touch</p>
+              {openSchool.meta?.coachSlug ? (
+                <Link to={`/coach/${openSchool.meta.coachSlug}`}
+                  className="mt-2 flex items-center gap-3 rounded-xl border-2 border-forest bg-sage p-4 hover:bg-leaf/40">
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-forest font-display text-sm font-semibold text-cream">
+                    {openSchool.meta.coachName?.split(' ').map((w) => w[0]).join('')}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="flex items-center gap-2 font-medium text-forest">
+                      {openSchool.meta.coachName}
+                      <span className="rounded-full bg-forest px-2 py-0.5 text-[10px] text-cream">Verified ✓</span>
+                    </p>
+                    <p className="truncate text-sm text-moss">{openSchool.meta.coachRole}</p>
+                  </div>
+                  <span className="rounded-lg bg-forest px-3 py-2 text-sm font-medium text-cream">Message</span>
+                </Link>
+              ) : (
+                <p className="mt-2 text-sm text-moss">
+                  No AthVia coach here yet — reach out through the school's athletics
+                  staff directory.
+                </p>
+              )}
+              <a href={directorySearch(openSchool.head)} target="_blank" rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm font-medium text-forest underline">
+                Find the athletics staff directory →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
