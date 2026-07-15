@@ -65,7 +65,7 @@ N. School Name (Division, State) — Match level (Target / Strong match / Reach)
     try {
       if (!SUPA_URL || !SUPA_KEY) throw new Error('no supabase')
       const ctrl = new AbortController()
-      const timer = setTimeout(() => ctrl.abort(), 15000)
+      const timer = setTimeout(() => ctrl.abort(), 40000)
       const res = await fetch(`${SUPA_URL}/functions/v1/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${SUPA_KEY}` },

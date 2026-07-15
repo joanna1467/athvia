@@ -57,30 +57,37 @@ Deno.serve(async (req) => {
       }),
     )
 
-    const res = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents,
-          generationConfig: { maxOutputTokens: 4096, temperature: 0.4 },
-        }),
-      },
-    )
-    const data = await res.json()
-
-    // Join ALL text parts — thinking models can split answers across parts.
-    const parts = data?.candidates?.[0]?.content?.parts ?? []
-    const reply =
-      parts
+    // Try the primary model first; if its quota is exhausted (free-tier
+    // limits are per-model), automatically retry on the backup model.
+    const models = ['gemini-flash-latest', 'gemini-flash-lite-latest']
+    let reply = ''
+    for (const model of models) {
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            contents,
+            generationConfig: { maxOutputTokens: 4096, temperature: 0.4 },
+          }),
+        },
+      )
+      const data = await res.json()
+      // Join ALL text parts — thinking models split answers across parts.
+      const parts = data?.candidates?.[0]?.content?.parts ?? []
+      reply = parts
         .map((p: { text?: string; thought?: boolean }) =>
           p.thought ? '' : (p.text ?? ''),
         )
         .join('')
-        .trim() ||
-      "Sorry — I couldn't generate an answer just now. Please try again."
+        .trim()
+      if (reply) break
+    }
+    if (!reply) {
+      reply = "Sorry — I couldn't generate an answer just now. Please try again."
+    }
 
     return new Response(JSON.stringify({ reply }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
