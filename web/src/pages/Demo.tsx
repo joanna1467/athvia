@@ -153,15 +153,15 @@ export default function Demo() {
   const suggestionAnswers: { match: string; a: string }[] = [
     {
       match: 'financial',
-      a: "College of Idaho and Concordia Irvine are likely your strongest financial fits — both are NAIA, so they can offer athletic dance scholarships that stack with your academic aid, and a 4.0/1600 makes you very attractive for merit money. Claremont-Mudd-Scripps and Tufts don't give athletic aid (D3), but their need- and merit-based packages can still bring costs down. Always run each school's net price calculator to compare real numbers.",
+      a: "Best value: College of Idaho and Concordia Irvine (both NAIA) — they can offer athletic dance scholarships that stack with academic aid, and your 4.0/1600 unlocks strong merit money. Claremont-Mudd-Scripps and Tufts give no athletic aid (D3) but meet financial need generously, and your scores earn merit there too. Run each school's net price calculator to compare real out-of-pocket cost before deciding.",
     },
     {
       match: 'college of idaho',
-      a: "College of Idaho already watchlisted you, so you're on their radar — reply fast. Lead your message with your NDA/UDA competition results and a link to your best solo footage, since they recruit funded varsity dancers. Mention your 4.0 and pre-med interest too; academics-first programs love a dancer who'll thrive in the classroom. Because Coach Dana Whitfield is on AthVia, you can message the program directly.",
+      a: "They already watchlisted you — reply within a day while you're top of mind. Lead with your NDA/UDA results and a link to your best solo footage; they recruit funded varsity dancers, so show the competitive résumé first. Add your 4.0 and pre-med goal — academics-first programs love that combo. And because Coach Dana Whitfield is verified on AthVia, message the program directly instead of guessing at an inbox.",
     },
     {
       match: 'pre-med',
-      a: "For pre-med strength, Claremont-Mudd-Scripps and Tufts lead your list — both have excellent science programs and medical-school placement, and your scores fit them. College of Idaho also has a strong health-sciences track with small classes and good advising, plus varsity dance. If pre-med is the priority, target schools where you can compete in dance without sacrificing lab and research access.",
+      a: "Claremont-Mudd-Scripps and Tufts lead for pre-med — top-tier science programs and strong med-school placement that your scores fully support. College of Idaho offers a solid health-sciences track with small classes and good advising, plus varsity dance. If pre-med is the priority, weight schools where you can keep competing without losing lab and research access.",
     },
   ]
 
