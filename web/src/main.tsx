@@ -9,6 +9,7 @@ import Profile from './pages/Profile'
 import Coaches from './pages/Coaches'
 import CoachProfile from './pages/CoachProfile'
 import Schools from './pages/Schools'
+import Demo from './pages/Demo'
 import Events from './pages/Events'
 import Pricing from './pages/Pricing'
 import About from './pages/About'
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="coaches" element={<Coaches />} />
           <Route path="coach/:slug" element={<CoachProfile />} />
           <Route path="schools" element={<Schools />} />
+          <Route path="demo" element={<Demo />} />
           <Route path="events" element={<Events />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="about" element={<About />} />

@@ -119,18 +119,49 @@ function scriptedAnswer(q: string): string {
 
 /* ---------- optional AI brain (auto-activates when edge function exists) ---------- */
 
+/* Context injected into every AI conversation so answers are specific to
+   AthVia — and personalized to the athlete on the demo dashboard. */
+function buildContext(): string {
+  let ctx = `[Background context — do not mention this message directly.]
+About AthVia (the platform you are the assistant for):
+- Recruiting platform for high school athletes targeting NAIA, NCAA D2, and D3 — "recruiting for the 90%", never JUCO or D1 focus.
+- Free for every athlete (profile, film uploads, coach-verified highlights, appearing in searches) and completely free for coaches.
+- One optional plan: AthVia Plus, $9.99/month — adds the University Activity Tracker (see which programs viewed your profile) and the AI College List Builder.
+- Paying never buys visibility: ranking is based on verified fit, profile quality, and program needs — never subscription.
+- Coaches are verified by school email domain; only verified coaches can confirm athlete film.
+- 28 sports supported, including emerging ones: competitive dance, cheer, fencing, equestrian, rugby, badminton, table tennis, boxing, skiing.
+- Schools currently active on AthVia include Kenyon College (D3), Grand Valley State (D2), College of Idaho (NAIA, competitive cheer & dance program), Williams College (D3), Concordia University Irvine (NAIA), and more.`
+
+  if (window.location.pathname.includes('/demo')) {
+    ctx += `
+
+The user you are talking to right now is this athlete (personalize answers to her):
+- Alina Fang, competitive dancer, Class of 2027, San Francisco CA
+- 4.0 unweighted GPA, 1600 SAT, 36 ACT — exceptional academics
+- Fit score: Strong NAIA fit (NAIA sponsors competitive dance as an emerging varsity sport); D3 also strong
+- Recent activity: College of Idaho and Concordia Irvine (both NAIA dance programs) viewed her profile this week; College of Idaho watchlisted her.
+Address her naturally, reference her sport/profile when relevant, and never invent activity beyond the above.`
+  }
+  return ctx
+}
+
 async function aiAnswer(messages: Msg[]): Promise<string | null> {
   if (!SUPA_URL || !SUPA_KEY) return null
   try {
     const ctrl = new AbortController()
-    const timer = setTimeout(() => ctrl.abort(), 8000)
+    const timer = setTimeout(() => ctrl.abort(), 10000)
+    const withContext: Msg[] = [
+      { role: 'user', text: buildContext() },
+      { role: 'assistant', text: 'Understood — ready to help.' },
+      ...messages.slice(-9),
+    ]
     const res = await fetch(`${SUPA_URL}/functions/v1/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${SUPA_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ messages: withContext }),
       signal: ctrl.signal,
     })
     clearTimeout(timer)

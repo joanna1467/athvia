@@ -25,6 +25,7 @@ const links = [
   { to: '/events', label: 'Events' },
   { to: '/pricing', label: 'Plans' },
   { to: '/about', label: 'About' },
+  { to: '/demo', label: 'Demo' },
 ]
 
 export default function App() {
