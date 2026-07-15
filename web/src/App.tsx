@@ -99,7 +99,7 @@ export default function App() {
                 NAIA programs.
               </p>
               <a
-                href="https://www.instagram.com/p/DajO9sdD2Wq/"
+                href="https://www.instagram.com/athviaofficial/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Follow AthVia on Instagram"

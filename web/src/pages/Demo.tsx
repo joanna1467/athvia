@@ -144,6 +144,39 @@ export default function Demo() {
   const [summaryLoading, setSummaryLoading] = useState(false)
   const [summaryAi, setSummaryAi] = useState(false)
 
+  // Ask-a-follow-up chat under the recommendations
+  const [ask, setAsk] = useState('')
+  const [chat, setChat] = useState<{ q: string; a: string }[]>([])
+  const [asking, setAsking] = useState(false)
+
+  async function askFollowUp(question: string) {
+    const q = question.trim()
+    if (!q || asking) return
+    setAsking(true)
+    setAsk('')
+    const prompt = `You are AthVia's recruiting guide helping Alina Fang — a competitive dancer, Class of 2027, San Francisco CA, 4.0 GPA / 1600 SAT, pre-med interest, targeting NAIA/D3 dance programs. She just built a college list including Concordia Irvine, College of Idaho, Claremont-Mudd-Scripps, Marian, and Tufts. Answer her question briefly (2-4 sentences), specific to her profile and these schools where relevant. Question: ${q}`
+    let answer = ''
+    try {
+      if (!SUPA_URL || !SUPA_KEY) throw new Error('no ai')
+      const ctrl = new AbortController()
+      const timer = setTimeout(() => ctrl.abort(), 15000)
+      const res = await fetch(`${SUPA_URL}/functions/v1/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${SUPA_KEY}` },
+        body: JSON.stringify({ messages: [{ role: 'user', text: prompt }] }),
+        signal: ctrl.signal,
+      })
+      clearTimeout(timer)
+      const data = await res.json()
+      if (!res.ok || !data.reply || String(data.reply).startsWith('Sorry')) throw new Error('ai failed')
+      answer = String(data.reply).replace(/\*\*/g, '').trim()
+    } catch {
+      answer = "I'm having trouble reaching AI right now — try again in a moment, or use the 💬 recruiting guide in the corner for general recruiting questions."
+    }
+    setChat((c) => [...c, { q, a: answer }])
+    setAsking(false)
+  }
+
   async function openSchoolDetail(head: string) {
     const meta = findMeta(head)
     setOpenSchool({ head, meta })
@@ -337,6 +370,46 @@ N. School Name (Division, State) — Match level (Target / Strong match / Reach)
               {aiPowered ? '✦ Generated live by AthVia AI from your profile and programs on the platform.' : 'Sample recommendations.'}{' '}
               Tap any school for an AI summary and how to reach them. Recommendations are guidance, not guarantees.
             </p>
+
+            {/* ask a follow-up about the list */}
+            <div className="mt-4 rounded-lg border border-line bg-sage p-4">
+              <p className="text-sm font-medium text-forest-deep">
+                Ask about your list
+              </p>
+              {chat.length > 0 && (
+                <div className="mt-3 space-y-3">
+                  {chat.map((c, i) => (
+                    <div key={i}>
+                      <p className="ml-auto w-fit max-w-[85%] rounded-lg bg-forest px-3 py-2 text-sm text-cream">{c.q}</p>
+                      <p className="mt-1.5 max-w-[90%] rounded-lg bg-cream px-3 py-2 text-sm text-forest-deep">{c.a}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {asking && (
+                <p className="mt-3 w-fit rounded-lg bg-cream px-3 py-2 text-sm text-moss">thinking…</p>
+              )}
+              {chat.length === 0 && !asking && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {['Which is my best financial fit?', 'How do I stand out to College of Idaho?', 'Which has the strongest pre-med?'].map((s) => (
+                    <button key={s} onClick={() => askFollowUp(s)}
+                      className="rounded-full border border-line bg-cream px-3 py-1 text-xs font-medium text-forest hover:border-forest">
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <form onSubmit={(e) => { e.preventDefault(); askFollowUp(ask) }}
+                className="mt-3 flex gap-2">
+                <input value={ask} onChange={(e) => setAsk(e.target.value)}
+                  placeholder="e.g. Which school should I contact first?"
+                  className="flex-1 rounded-lg border border-line bg-cream px-3 py-2 text-sm text-forest-deep placeholder:text-moss/60 focus:border-forest focus:outline-none" />
+                <button type="submit" disabled={asking || !ask.trim()}
+                  className="rounded-lg bg-forest px-4 py-2 text-sm font-medium text-cream disabled:opacity-40">
+                  Ask
+                </button>
+              </form>
+            </div>
           </div>
         )}
       </div>

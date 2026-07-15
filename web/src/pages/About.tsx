@@ -115,7 +115,7 @@ export default function About() {
       <p className="mt-10 text-sm text-moss">
         Follow along on{' '}
         <a
-          href="https://www.instagram.com/p/DajO9sdD2Wq/"
+          href="https://www.instagram.com/athviaofficial/"
           target="_blank"
           rel="noreferrer"
           className="font-medium text-forest underline"
